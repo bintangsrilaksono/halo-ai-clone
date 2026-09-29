@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Amanah Familia Solution — Perawatan Properti Tanpa Drama</title>
+<meta name="color-scheme" content="light" />
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root { color-scheme: light; }
+  body { font-family: -apple-system, Segoe UI, Roboto, Arial, sans-serif; color: #1a1a1a; }
+  #chatInput { color: #1a1a1a; background: #fff; }
+  .navy { color: #0F2247; }
+  .bg-navy { background-color: #0F2247; }
+  .gold { color: #C9A227; }
+  .bg-gold { background-color: #C9A227; }
+  .bg-cream { background-color: #F7F3E9; }
+  #chatLog { scrollbar-width: thin; }
+  .bubble { max-width: 85%; padding: 10px 14px; border-radius: 14px; line-height: 1.4; font-size: 14px; white-space: pre-wrap; }
+  .bubble.user { align-self: flex-end; background: #FBF0D0; border-bottom-right-radius: 4px; color: #1a1a1a; }
+  .bubble.agent { align-self: flex-start; background: #f0f0f0; border-bottom-left-radius: 4px; color: #1a1a1a; }
+  .bubble.pending { color: #888; font-style: italic; }
+</style>
+</head>
+<body class="bg-cream text-slate-800">
+
+  <!-- NAV -->
+  <header class="bg-navy text-white">
+    <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-2 font-bold text-lg">
+        <span class="gold">◆</span> Amanah Familia Solution
+      </div>
+      <a href="#cta" class="hidden sm:inline-block bg-gold text-navy font-semibold text-sm px-4 py-2 rounded-full hover:opacity-90">Chat Sekarang</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="bg-navy text-white">
+    <div class="max-w-6xl mx-auto px-5 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <p class="gold font-semibold tracking-wide text-sm mb-3">JASA PROFESSIONAL PERAWATAN PROPERTI · JABODETABEK</p>
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-5">
+          Properti Anda Tidak Perlu Lagi Rusak Mendadak.
+        </h1>
+        <p class="text-slate-200 text-lg mb-8 max-w-xl">
+          AC mati pas meeting penting? Pipa bocor jam 10 malam? Dengan AI chatbot 24/7 dan tim teknisi bersertifikat, setiap masalah direspons cepat — dan biaya maintenance jadi angka tetap bulanan, bukan kejutan.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="#cta" class="bg-gold text-navy font-semibold px-6 py-3 rounded-full hover:opacity-90">Konsultasi Gratis via WhatsApp</a>
+          <a href="#layanan" class="border border-white/40 text-white px-6 py-3 rounded-full hover:bg-white/10">Lihat Layanan</a>
+        </div>
+      </div>
+
+      <!-- Live chat widget: real AI, same-origin fetch to /api/chat -->
+      <div class="bg-white rounded-2xl shadow-2xl overflow-hidden max-w-sm mx-auto w-full flex flex-col" style="height:600px;">
+        <div class="bg-gold text-navy px-4 py-3 font-semibold text-sm flex items-center gap-2">
+          <span>🛠️</span> Coba Langsung — Asisten AI Kami
+        </div>
+        <div id="chatLog" class="flex-1 overflow-y-auto p-4 flex flex-col gap-3 bg-slate-50"></div>
+        <form id="chatForm" class="flex gap-2 p-3 border-t">
+          <input id="chatInput" autocomplete="off" placeholder="Tulis pesan..." class="flex-1 border border-slate-300 rounded-full px-4 py-2 text-sm outline-none" />
+          <button type="submit" class="bg-navy text-white text-sm font-semibold rounded-full px-5 disabled:opacity-50">Kirim</button>
+        </form>
+        <div class="px-4 py-2 border-t text-xs text-slate-400">Ini AI beneran — coba ketik pertanyaan Anda sendiri 👆</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <section class="bg-white border-b">
+    <div class="max-w-6xl mx-auto px-5 py-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div><div class="text-3xl font-extrabold navy">100+</div><div class="text-sm text-slate-500 mt-1">Pelanggan Terpercaya</div></div>
+      <div><div class="text-3xl font-extrabold navy">20+</div><div class="text-sm text-slate-500 mt-1">Teknisi Bersertifikat</div></div>
+      <div><div class="text-3xl font-extrabold navy">5+</div><div class="text-sm text-slate-500 mt-1">Tahun Pengalaman</div></div>
+      <div><div class="text-3xl font-extrabold navy">&lt;2 jam</div><div class="text-sm text-slate-500 mt-1">SLA Respons Darurat*</div></div>
+    </div>
+  </section>
+
+  <!-- PROBLEM / AGITATE -->
+  <section class="max-w-6xl mx-auto px-5 py-16">
+    <h2 class="text-2xl md:text-3xl font-bold navy text-center mb-3">Rasanya familiar?</h2>
+    <p class="text-center text-slate-500 mb-10 max-w-2xl mx-auto">Ini yang paling sering dikeluhkan pemilik & pengelola properti sebelum kenal kami.</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="bg-white rounded-xl p-5 shadow-sm border">
+        <div class="text-2xl mb-2">😰</div>
+        <p class="font-semibold mb-1">"AC mati pas ada tamu penting, malu banget."</p>
+        <p class="text-sm text-slate-500">Kerusakan mendadak langsung ganggu citra profesional & operasional bisnis.</p>
+      </div>
+      <div class="bg-white rounded-xl p-5 shadow-sm border">
+        <div class="text-2xl mb-2">📵</div>
+        <p class="font-semibold mb-1">"Jam 10 malam pipa bocor, telepon siapa?"</p>
+        <p class="text-sm text-slate-500">Tidak ada kontak darurat terpercaya yang bisa diandalkan kapan saja.</p>
+      </div>
+      <div class="bg-white rounded-xl p-5 shadow-sm border">
+        <div class="text-2xl mb-2">🧾</div>
+        <p class="font-semibold mb-1">"Tukang panggilan sering mangkir, tanpa garansi."</p>
+        <p class="text-sm text-slate-500">Pengalaman buruk berulang bikin susah percaya vendor jasa manapun.</p>
+      </div>
+      <div class="bg-white rounded-xl p-5 shadow-sm border">
+        <div class="text-2xl mb-2">💸</div>
+        <p class="font-semibold mb-1">"Biaya servis selalu jadi kejutan tak terduga."</p>
+        <p class="text-sm text-slate-500">Sulit menganggarkan biaya properti kalau semuanya sifatnya reaktif.</p>
+      </div>
+      <div class="bg-white rounded-xl p-5 shadow-sm border">
+        <div class="text-2xl mb-2">🗂️</div>
+        <p class="font-semibold mb-1">"Pegang 15 unit, lupa mana yang sudah diservis."</p>
+        <p class="text-sm text-slate-500">Tanpa sistem, riwayat maintenance tiap unit tersebar dan mudah terlewat.</p>
+      </div>
+      <div class="bg-white rounded-xl p-5 shadow-sm border">
+        <div class="text-2xl mb-2">🍽️</div>
+        <p class="font-semibold mb-1">"Dapur resto berhenti total pas jam makan siang."</p>
+        <p class="text-sm text-slate-500">Untuk bisnis F&B, downtime properti = kerugian omzet langsung.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION / HOW IT WORKS -->
+  <section class="bg-navy text-white">
+    <div class="max-w-6xl mx-auto px-5 py-16">
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-3">Begini Cara Kami Menjaga Properti Anda</h2>
+      <p class="text-center text-slate-300 mb-12 max-w-2xl mx-auto">Bukan sekadar tukang panggilan — ada sistem di baliknya.</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="text-center">
+          <div class="w-14 h-14 rounded-full bg-gold text-navy flex items-center justify-center text-xl font-bold mx-auto mb-4">1</div>
+          <h3 class="font-semibold mb-2">Chat AI 24/7</h3>
+          <p class="text-sm text-slate-300">Sampaikan kebutuhan kapan saja lewat WhatsApp — direspons instan, tanpa nunggu jam kerja.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 rounded-full bg-gold text-navy flex items-center justify-center text-xl font-bold mx-auto mb-4">2</div>
+          <h3 class="font-semibold mb-2">Teknisi Bersertifikat</h3>
+          <p class="text-sm text-slate-300">Dijadwalkan sesuai SLA, datang sesuai komitmen, kerja sesuai SOP & standar K3.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 rounded-full bg-gold text-navy flex items-center justify-center text-xl font-bold mx-auto mb-4">3</div>
+          <h3 class="font-semibold mb-2">Dokumentasi Otomatis</h3>
+          <p class="text-sm text-slate-300">Tiap pekerjaan tercatat lengkap dengan foto & laporan — tidak ada lagi sengketa "siapa tanggung jawab".</p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 rounded-full bg-gold text-navy flex items-center justify-center text-xl font-bold mx-auto mb-4">4</div>
+          <h3 class="font-semibold mb-2">Dashboard Riwayat</h3>
+          <p class="text-sm text-slate-300">Pantau kondisi & riwayat maintenance semua unit properti Anda dalam satu tempat.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="layanan" class="max-w-6xl mx-auto px-5 py-16">
+    <h2 class="text-2xl md:text-3xl font-bold navy text-center mb-3">Cakupan Layanan</h2>
+    <p class="text-center text-slate-500 mb-10">Satu partner untuk seluruh kebutuhan perawatan properti Anda.</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      <div class="bg-white rounded-xl border p-5 text-center">
+        <div class="text-3xl mb-2">❄️</div>
+        <p class="font-semibold text-sm">AC Maintenance</p>
+      </div>
+      <div class="bg-white rounded-xl border p-5 text-center">
+        <div class="text-3xl mb-2">💧</div>
+        <p class="font-semibold text-sm">Water Tank Cleaning</p>
+      </div>
+      <div class="bg-white rounded-xl border p-5 text-center">
+        <div class="text-3xl mb-2">🚿</div>
+        <p class="font-semibold text-sm">Water Heater</p>
+      </div>
+      <div class="bg-white rounded-xl border p-5 text-center">
+        <div class="text-3xl mb-2">🔧</div>
+        <p class="font-semibold text-sm">Plumbing</p>
+      </div>
+      <div class="bg-white rounded-xl border p-5 text-center">
+        <div class="text-3xl mb-2">⚡</div>
+        <p class="font-semibold text-sm">Electrical</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEGMENTS -->
+  <section class="bg-white border-y">
+    <div class="max-w-6xl mx-auto px-5 py-16">
+      <h2 class="text-2xl md:text-3xl font-bold navy text-center mb-10">Dipercaya Berbagai Jenis Properti</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center text-sm">
+        <div class="bg-cream rounded-lg p-4">🏢 Office & Commercial</div>
+        <div class="bg-cream rounded-lg p-4">🏝️ Villa & Homestay</div>
+        <div class="bg-cream rounded-lg p-4">🏠 Kost & Residential</div>
+        <div class="bg-cream rounded-lg p-4">🍽️ Restaurant & F&B</div>
+        <div class="bg-cream rounded-lg p-4">💆 Beauty & Wellness</div>
+        <div class="bg-cream rounded-lg p-4">🛍️ Retail & Small Business</div>
+        <div class="bg-cream rounded-lg p-4 col-span-2 sm:col-span-2">🤝 Property Owner & Property Manager</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFER -->
+  <section class="max-w-4xl mx-auto px-5 py-16 text-center">
+    <p class="gold font-semibold text-sm mb-2">PALING DIREKOMENDASIKAN</p>
+    <h2 class="text-2xl md:text-4xl font-extrabold navy mb-4">Paket Preventive Maintenance Bulanan</h2>
+    <p class="text-slate-500 mb-8 max-w-xl mx-auto">Biaya flat tiap bulan, bukan kejutan tiap kerusakan. Tim kami rutin cek kondisi properti Anda sebelum masalah besar terjadi.</p>
+    <div class="bg-white border-2 border-gold rounded-2xl p-8 text-left max-w-md mx-auto shadow-lg">
+      <ul class="space-y-3 text-sm">
+        <li class="flex gap-2"><span class="gold">✔</span> Inspeksi rutin AC, listrik, plumbing & water system</li>
+        <li class="flex gap-2"><span class="gold">✔</span> SLA respons darurat &lt; 2 jam</li>
+        <li class="flex gap-2"><span class="gold">✔</span> Laporan & dokumentasi digital tiap kunjungan</li>
+        <li class="flex gap-2"><span class="gold">✔</span> Akses dashboard riwayat maintenance</li>
+        <li class="flex gap-2"><span class="gold">✔</span> Teknisi bersertifikat & sesuai SOP K3</li>
+      </ul>
+      <a href="#cta" class="block text-center mt-6 bg-navy text-white font-semibold py-3 rounded-full hover:opacity-90">Tanya Harga via WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="bg-cream py-16">
+    <div class="max-w-6xl mx-auto px-5">
+      <h2 class="text-2xl md:text-3xl font-bold navy text-center mb-10">Kata Mereka</h2>
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="bg-white rounded-xl p-6 shadow-sm border">
+          <p class="text-sm text-slate-600 mb-4">"Saya kira nunggu setengah hari, ternyata teknisinya sampai dalam 90 menit. AC dingin lagi sebelum tamu check-in."</p>
+          <p class="font-semibold text-sm navy">Pemilik Villa, Bogor</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm border">
+          <p class="text-sm text-slate-600 mb-4">"Dulu urus 15 unit kost pusing sendiri. Sekarang cukup satu chat, semua kejadwal rapi di dashboard."</p>
+          <p class="font-semibold text-sm navy">Property Manager, Tangerang</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm border">
+          <p class="text-sm text-slate-600 mb-4">"Dapur sempat bermasalah pas jam sibuk, tim mereka datang cepat. Sekarang kami pakai paket bulanan biar nggak kejadian lagi."</p>
+          <p class="font-semibold text-sm navy">Owner Kafe, Jakarta Selatan</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" class="bg-navy text-white py-16">
+    <div class="max-w-3xl mx-auto px-5 text-center">
+      <h2 class="text-2xl md:text-4xl font-extrabold mb-4">Mulai dari Satu Pesan WhatsApp</h2>
+      <p class="text-slate-300 mb-8">Konsultasi gratis, tanpa komitmen. Ceritakan kondisi properti Anda, kami bantu carikan solusinya.</p>
+      <a href="https://wa.me/6281993164660" target="_blank" rel="noopener" class="inline-block bg-gold text-navy font-bold px-8 py-4 rounded-full text-lg hover:opacity-90">
+        💬 Chat +62 819-9316-4660
+      </a>
+      <p class="text-xs text-slate-400 mt-6">*SLA respons darurat berlaku untuk area layanan Jabodetabek, tergantung ketersediaan teknisi terdekat.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t py-8">
+    <div class="max-w-6xl mx-auto px-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+      <div class="font-semibold navy">Amanah Familia Solution</div>
+      <div>Merawat Properti, Menjaga Nilai Investasi</div>
+      <div>Service Area: Jabodetabek</div>
+    </div>
+  </footer>
+
+<script>
+  function makeId() {
+    if (window.crypto?.randomUUID) return crypto.randomUUID();
+    return "sess-" + Date.now() + "-" + Math.random().toString(36).slice(2, 10);
+  }
+
+  let sessionId;
+  try {
+    sessionId = localStorage.getItem("afs_session") || makeId();
+    localStorage.setItem("afs_session", sessionId);
+  } catch {
+    sessionId = makeId();
+  }
+
+  const log = document.getElementById("chatLog");
+  const form = document.getElementById("chatForm");
+  const input = document.getElementById("chatInput");
+
+  function escapeHtml(text) {
+    const div = document.createElement("div");
+    div.textContent = text;
+    return div.innerHTML;
+  }
+  function renderMarkdownLite(text) {
+    return escapeHtml(text)
+      .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+      .replace(/\*(.+?)\*/g, "<em>$1</em>");
+  }
+  function addBubble(text, who) {
+    const el = document.createElement("div");
+    el.className = "bubble " + who;
+    el.innerHTML = renderMarkdownLite(text);
+    log.appendChild(el);
+    log.scrollTop = log.scrollHeight;
+    return el;
+  }
+
+  addBubble("Halo! 👋 Saya asisten AI Amanah Familia Solution. Ada properti yang butuh dibantu? Coba tanya apa saja di sini.", "agent");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const message = input.value.trim();
+    if (!message) return;
+    input.value = "";
+    addBubble(message, "user");
+
+    const pending = addBubble("mengetik...", "agent pending");
+    const button = form.querySelector("button");
+    button.disabled = true;
+
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId, message }),
+      });
+      const data = await res.json();
+      pending.innerHTML = renderMarkdownLite(data.reply ?? "(tidak ada balasan)");
+      pending.classList.remove("pending");
+    } catch (err) {
+      pending.textContent = "Maaf, gagal menghubungi server. Coba lagi ya.";
+      pending.classList.remove("pending");
+    } finally {
+      button.disabled = false;
+      input.focus();
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "AC-MTN",
+    "name": "AC Maintenance",
+    "description": "Perawatan sistem pendingin udara untuk menjaga performa, kebersihan, dan efisiensi unit.",
+    "cakupan": ["Cleaning AC", "Pemeriksaan kondisi unit", "Pemeriksaan drainase", "Troubleshooting", "Bongkar/pasang AC", "Instalasi AC", "Preventive maintenance berkala"]
+  },
+  {
+    "id": "WTR-TANK",
+    "name": "Water Tank Cleaning",
+    "description": "Pembersihan dan perawatan tandon air untuk membantu menjaga kebersihan sistem penyimpanan air.",
+    "cakupan": ["Pengurasan air", "Pembersihan bagian dalam tandon", "Penggosokan kerak dan lumut ringan", "Pembersihan tutup dan area sekitar", "Pengisian kembali", "Testing aliran air"]
+  },
+  {
+    "id": "WTR-HEAT",
+    "name": "Water Heater Maintenance",
+    "description": "Pemeriksaan dan cleaning water heater untuk membantu menjaga performa dan keamanan unit.",
+    "cakupan": ["Electric water heater", "Gas water heater", "Solar water heater", "Pemeriksaan koneksi dan fungsi", "Pemeriksaan kebocoran", "Cleaning komponen", "Testing pemanasan"]
+  },
+  {
+    "id": "PLUMB",
+    "name": "Plumbing Maintenance",
+    "description": "Layanan pemeriksaan, perawatan, dan perbaikan ringan pada sistem plumbing properti.",
+    "cakupan": ["Pemeriksaan kebocoran", "Perbaikan instalasi air ringan", "Penggantian valve dan fitting", "Pemeriksaan pompa air", "Pemeriksaan sanitary", "Troubleshooting aliran air"]
+  },
+  {
+    "id": "ELEC",
+    "name": "Electrical Maintenance",
+    "description": "Layanan pemeriksaan dan maintenance instalasi listrik untuk membantu menjaga keamanan dan fungsi sistem kelistrikan.",
+    "cakupan": ["Kunjungan dan pengecekan listrik", "Troubleshooting", "Pemeriksaan MCB", "Pemeriksaan stop kontak dan saklar", "Perbaikan instalasi ringan", "Penggantian komponen", "Instalasi titik listrik"]
+  }
+]
